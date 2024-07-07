@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-deployment
+  namespace: custom-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drone-app
+  template:
+    metadata:
+      labels:
+        app: drone-app
+    spec:
+      serviceAccountName: ksa
+      containers:
+      - name: drone-app
+        image: europe-central2-docker.pkg.dev/kubernetes-drone-428215/drone-repo/drone-app:tag2
