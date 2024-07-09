@@ -1,0 +1,14 @@
+[
+    {"name": "drone_id", "type": "INT64", "mode": "REQUIRED"},
+    {"name": "timestamp", "type": "TIMESTAMP", "mode": "REQUIRED"},
+    {"name": "latitude", "type": "FLOAT64"},
+    {"name": "longitude", "type": "FLOAT64"},
+    {"name": "altitude_agl", "type": "FLOAT64"},
+    {"name": "altitude_asl", "type": "FLOAT64"},
+    {"name": "yaw", "type": "FLOAT64"},
+    {"name": "pitch", "type": "FLOAT64"},
+    {"name": "roll", "type": "FLOAT64"},
+    {"name": "speed", "type": "FLOAT64"},
+    {"name": "direction", "type": "FLOAT64"},
+    {"name": "hdop", "type": "FLOAT64"}
+]
