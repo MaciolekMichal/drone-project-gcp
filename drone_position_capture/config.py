@@ -1,0 +1,12 @@
+import os
+
+
+PROJECT_ID = os.getenv("PROJECT_ID")
+TOPIC_NAME = os.getenv("DRONE_POSITIONS_TOPIC")
+SUBSCRIPTION_NAME = os.getenv("DRONE_POSITIONS_SUBSCRIPTION")
+DATASET_NAME = "drone_data"
+TABLE_NAME = "drone_positions"
+
+TABLE_ID = f"{PROJECT_ID}.{DATASET_NAME}.{TABLE_NAME}"
+TOPIC_PATH = f"projects/{PROJECT_ID}/topics/{TOPIC_NAME}" 
+SUBSCRIPTION_PATH = f"projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}"
