@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: drone-deployment
-  namespace: custom-ns
+  namespace: ns-drone
 spec:
   replicas: 1
   selector:

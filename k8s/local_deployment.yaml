@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-app-deployment
+  namespace: ns-drone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drone-app
+  template:
+    metadata:
+      labels:
+        app: drone-app
+    spec:
+      containers:
+      - name: drone-app
+        image: drone-app:latest
+        volumeMounts:
+        - name: drone-key-volume
+          mountPath: /etc/secrets/drone-key.json
+          subPath: drone-key.json
+          readOnly: true
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: "/etc/secrets/drone-key.json"
+        - name: PROJECT_ID
+          value: "drone-navigation-428814"
+        - name: DRONE_POSITIONS_TOPIC
+          value: "drone-positions-topic"
+        - name: DRONE_POSITIONS_SUBSCRIPTION
+          value: "drone-positions-subscription"
+        - name: DRONE_DATASET_NAME
+          value: "drone_data"
+        - name: DRONE_POSITIONS_TABLE_NAME
+          value: "drone_positions"
+      volumes:
+      - name: drone-key-volume
+        hostPath:
+          path: "C:/Users/micha/secure_keys/drone-key.json"
+          type: File
