@@ -16,6 +16,7 @@ spec:
       containers:
       - name: drone-app
         image: drone-app:latest
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: drone-key-volume
           mountPath: /etc/secrets/drone-key.json
@@ -36,6 +37,5 @@ spec:
           value: "drone_positions"
       volumes:
       - name: drone-key-volume
-        hostPath:
-          path: "C:/Users/micha/secure_keys/drone-key.json"
-          type: File
+        secret:
+          secretName: drone-key-secret
