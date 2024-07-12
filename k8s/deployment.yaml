@@ -13,8 +13,10 @@ spec:
       labels:
         app: drone-app
     spec:
-      serviceAccountName: ksa
+      serviceAccountName: drone-ksa
       containers:
       - name: drone-app
-        image: europe-central2-docker.pkg.dev/drone-navigation-428814/drone-repo/drone-app:latest
-
+        image: europe-central2-docker.pkg.dev/drone-navigation-428814/drone-repo/drone-app:v1
+        envFrom:
+        - configMapRef:
+            name: drone-env-vars

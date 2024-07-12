@@ -22,19 +22,12 @@ spec:
           mountPath: /etc/secrets/drone-key.json
           subPath: drone-key.json
           readOnly: true
+        envFrom:
+        - configMapRef:
+            name: drone-env-vars
         env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: "/etc/secrets/drone-key.json"
-        - name: PROJECT_ID
-          value: "drone-navigation-428814"
-        - name: DRONE_POSITIONS_TOPIC
-          value: "drone-positions-topic"
-        - name: DRONE_POSITIONS_SUBSCRIPTION
-          value: "drone-positions-subscription"
-        - name: DRONE_DATASET_NAME
-          value: "drone_data"
-        - name: DRONE_POSITIONS_TABLE_NAME
-          value: "drone_positions"
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/etc/secrets/drone-key.json"
       volumes:
       - name: drone-key-volume
         secret:
