@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: drone-deployment
-  namespace: custom-ns
+  namespace: ns-drone
 spec:
   replicas: 1
   selector:
@@ -13,7 +13,10 @@ spec:
       labels:
         app: drone-app
     spec:
-      serviceAccountName: ksa
+      serviceAccountName: drone-ksa
       containers:
       - name: drone-app
-        image: europe-central2-docker.pkg.dev/kubernetes-drone-428215/drone-repo/drone-app:tag2
+        image: europe-central2-docker.pkg.dev/drone-navigation-428814/drone-repo/drone-app:v1
+        envFrom:
+        - configMapRef:
+            name: drone-env-vars

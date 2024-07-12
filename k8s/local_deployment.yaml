@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-app-deployment
+  namespace: ns-drone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drone-app
+  template:
+    metadata:
+      labels:
+        app: drone-app
+    spec:
+      containers:
+      - name: drone-app
+        image: drone-app:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: drone-key-volume
+          mountPath: /etc/secrets/drone-key.json
+          subPath: drone-key.json
+          readOnly: true
+        envFrom:
+        - configMapRef:
+            name: drone-env-vars
+        env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/etc/secrets/drone-key.json"
+      volumes:
+      - name: drone-key-volume
+        secret:
+          secretName: drone-key-secret

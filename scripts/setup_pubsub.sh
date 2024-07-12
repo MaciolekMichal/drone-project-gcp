@@ -9,6 +9,10 @@ TOPIC_NAME="drone-positions-topic"
 SUBSCRIPTION_NAME="drone-positions-subscription"
 
 
+echo "Enable Cloud Pub/Sub API:"
+gcloud services enable pubsub.googleapis.com
+
+
 echo "Create Pub/Sub topic:"
 gcloud pubsub topics create "$TOPIC_NAME" \
     --project="$PROJECT_ID"

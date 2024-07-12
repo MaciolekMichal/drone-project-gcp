@@ -1,8 +1,7 @@
 from google.cloud import pubsub_v1
 
-from drone_position_capture.config import SUBSCRIPTION_PATH
-from drone_position_capture.helpers import callback
-
+from config import SUBSCRIPTION_PATH
+from helpers import callback
 
 
 def main():

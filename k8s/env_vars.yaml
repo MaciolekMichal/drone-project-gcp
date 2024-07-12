@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: drone-env-vars
+  namespace: ns-drone
+data:
+  PROJECT_ID: "drone-navigation-428814"
+  DRONE_POSITIONS_TOPIC: "drone-positions-topic"
+  DRONE_POSITIONS_SUBSCRIPTION: "drone-positions-subscription"
+  DRONE_DATASET_NAME: "drone_data"
+  DRONE_POSITIONS_TABLE_NAME: "drone_positions"

@@ -2,7 +2,7 @@ import json
 
 from google.cloud import bigquery
 
-from drone_position_capture.config import TABLE_ID
+from  config import TABLE_ID
 
 
 bigquery_client = bigquery.Client()

@@ -11,6 +11,10 @@ TABLE_NAME="drone_positions"
 SCHEMA_FILE="./drone_positions_schema.json"
 
 
+echo "Enable BigQuery API:"
+gcloud services enable bigquery.googleapis.com
+
+
 echo "Create BigQuery dataset:"
 bq --location=EU \
     mk --dataset \
